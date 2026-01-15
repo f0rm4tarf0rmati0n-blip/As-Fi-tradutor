@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tradutor AS-FI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f1220;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .app {
+      background: #1a1f3c;
+      padding: 20px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      resize: none;
+    }
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #5a6cff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #4b5cf0;
+    }
+    .output {
+      margin-top: 15px;
+      padding: 10px;
+      background: #0f1220;
+      border-radius: 10px;
+      min-height: 80px;
+      font-size: 18px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Tradutor AS-FI</h1>
+    <p>Língua criada por ti • Português → AS-FI</p><textarea id="input" placeholder="Escreve em português..."></textarea>
+<button onclick="traduzir()">Traduzir</button>
+<div class="output" id="output"></div>
+
+  </div>  <script>
+    // Dicionário oficial da língua AS-FI (compatível com Gboard)
+    // Dicionário oficial AS-FI (script universal, GitHub friendly)
+    // Regras:
+    // - Cada letra = até 2 caracteres (número + símbolo)
+    // - Espaços = " - " (espaço, hífen, espaço)
+    const asfi = {
+      a: "1*",
+      b: "2@",
+      c: "3#",
+      d: "4$",
+      e: "5%",
+      f: "6^",
+      g: "7&",
+      h: "8(",
+      i: "9)",
+      j: "0+",
+      k: "1=",
+      l: "2?",
+      m: "3!",
+      n: "4~",
+      o: "5_",
+      p: "6:",
+      q: "7;",
+      r: "8<",
+      s: "9>",
+      t: "0/",
+      u: "1|",
+      v: "2{",
+      w: "3}",
+      x: "4[",
+      y: "5]",
+      z: "6\",
+      " ": " - "
+    };
+
+    function traduzir() {
+      const texto = document.getElementById("input").value.toLowerCase();
+      let resultado = "";
+
+      for (let letra of texto) {
+        resultado += asfi[letra] || letra;
+      }
+
+      document.getElementById("output").innerText = resultado;
+    }
+  </script></body>
+</html>
